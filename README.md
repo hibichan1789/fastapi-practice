@@ -1,10 +1,5 @@
 #python fastAPI練習
 
-数値をクエリパラメータで送れるようにした
-リストでも送れることを今日初めて知った
-numpy配列のままではJSONを返せない、→.tolist()でリストに直す
-ENV PYTHONUNBUFFERED=1 ←バッファを溜めずに出力するために使う
-
 #コンテナの起動
 docker compose up -d --build
 
@@ -13,3 +8,10 @@ docker compose logs -f web
 
 #swaggerの起動
 http://localhost:8000/docs
+
+#学習メモ
+・ENV PYTHONUNBUFFERED=1 ←バッファを溜めずに出力するために使う
+・リクエストボディの"text"をtextに格納してJSONとして外部のファイル(app/data/message.json)に保存した
+・ログを定義してみてコンソール出力できるようにした
+・asynccontextmanagerをつかって起動時の処理を行うようにした、起動時に保存用のディレクトリの作成を行った
+・HTTPExceptionやstatus_codeでエラーハンドリング、ステータスコードを管理した
