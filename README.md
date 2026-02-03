@@ -1,6 +1,6 @@
 #python fastAPI練習
 
-初めてのDockerを使ったfastAPIの起動
+名前をパスパラメータで受け取るようにした
 
 #コンテナの起動
 docker compose up -d --build
