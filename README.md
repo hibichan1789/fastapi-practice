@@ -1,8 +1,6 @@
 #python fastAPI練習
 
-クエリパラメータで2つの整数値を受け取り四則演算を実装した
-b = 0の時の0除算エラーを回避
-
+numpyのインストールをできるようにした
 #コンテナの起動
 docker compose up -d --build
 
