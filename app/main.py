@@ -1,24 +1,19 @@
 from fastapi import FastAPI, Query
+import numpy as np
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
-@app.get("/")
-def home():
-    return {"message": "DockerとGitHubの連携に成功"}
-
-@app.get("/hello/{name}")
-def say_hello(name:str):
-    return {"message": f"こんにちは{name}さん"}
-
-@app.get("/add", description="クエリパラメータの二つの整数値を四則演算する")
-def calc_numbers(a:int = Query(..., description="整数値"), b:int = Query(..., description="整数値")):
-    add_value = a + b
-    sub_value = a - b
-    mul_value = a * b
-    div_value = a / b if b != 0 else None
+@app.get("/stats", description="数値リストの統計値を返す")
+def get_stats(numbers:list[float] = Query(..., description="計算したい数値のリスト")):
+    array = np.array(numbers)
+    logger.info(array)
     return {
-        f"{a} + {b}": add_value,
-        f"{a} - {b}": sub_value,
-        f"{a} * {b}": mul_value,
-        f"{a} / {b}": div_value
-        }
+        "array":array.tolist(),
+        "mean": np.mean(array),
+        "max": np.max(array),
+        "min": np.min(array)
+    }
