@@ -1,3 +1,6 @@
 #python fastAPI練習
 
-環境構築だけした
+初めてのDockerを使ったfastAPIの起動
+
+#コンテナの起動
+docker compose up -d --build
